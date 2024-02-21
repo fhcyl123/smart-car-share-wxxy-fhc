@@ -1,0 +1,4 @@
+Change Component Designator: OldDesignator=DCIN NewDesignator=电源供电
+Change Component Designator: OldDesignator=DCOUT1 NewDesignator=电机电源1
+Change Component Designator: OldDesignator=DCOUT2 NewDesignator=电机接口2
+Change Component Designator: OldDesignator=U1 NewDesignator=TC264

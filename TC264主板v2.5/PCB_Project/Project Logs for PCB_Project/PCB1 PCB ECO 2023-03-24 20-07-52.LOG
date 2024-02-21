@@ -1,0 +1,186 @@
+Removed Pin From Net: NetName=GND Pin=TC264-1
+Removed Pin From Net: NetName=VCC Pin=TC264-2
+Removed Pin From Net: NetName=GND Pin=TC264-3
+Removed Pin From Net: NetName=VCC Pin=TC264-4
+Removed Pin From Net: NetName=A21 Pin=TC264-5
+Removed Pin From Net: NetName=A20 Pin=TC264-6
+Removed Pin From Net: NetName=A17 Pin=TC264-7
+Removed Pin From Net: NetName=A16 Pin=TC264-8
+Removed Pin From Net: NetName=A13 Pin=TC264-9
+Removed Pin From Net: NetName=A12 Pin=TC264-10
+Removed Pin From Net: NetName=A11 Pin=TC264-11
+Removed Pin From Net: NetName=A10 Pin=TC264-12
+Removed Pin From Net: NetName=A8 Pin=TC264-13
+Removed Pin From Net: NetName=A7 Pin=TC264-14
+Removed Pin From Net: NetName=A6 Pin=TC264-15
+Removed Pin From Net: NetName=A5 Pin=TC264-16
+Removed Pin From Net: NetName=A4 Pin=TC264-17
+Removed Pin From Net: NetName=A3 Pin=TC264-18
+Removed Pin From Net: NetName=A2 Pin=TC264-19
+Removed Pin From Net: NetName=A1 Pin=TC264-20
+Removed Pin From Net: NetName=A0 Pin=TC264-21
+Removed Pin From Net: NetName=33.6 Pin=TC264-24
+Removed Pin From Net: NetName=33.7 Pin=TC264-25
+Removed Pin From Net: NetName=33.9 Pin=TC264-27
+Removed Pin From Net: NetName=33.10 Pin=TC264-28
+Removed Pin From Net: NetName=33.12 Pin=TC264-30
+Removed Pin From Net: NetName=33.13 Pin=TC264-31
+Removed Pin From Net: NetName=32.4 Pin=TC264-32
+Removed Pin From Net: NetName=22.0 Pin=TC264-34
+Removed Pin From Net: NetName=22.1 Pin=TC264-35
+Removed Pin From Net: NetName=22.2 Pin=TC264-36
+Removed Pin From Net: NetName=22.3 Pin=TC264-37
+Removed Pin From Net: NetName=21.2 Pin=TC264-38
+Removed Pin From Net: NetName=21.3 Pin=TC264-39
+Removed Pin From Net: NetName=21.4 Pin=TC264-40
+Removed Pin From Net: NetName=21.5 Pin=TC264-41
+Removed Pin From Net: NetName=20.0 Pin=TC264-44
+Removed Pin From Net: NetName=20.3 Pin=TC264-46
+Removed Pin From Net: NetName=20.11 Pin=TC264-54
+Removed Pin From Net: NetName=20.12 Pin=TC264-55
+Removed Pin From Net: NetName=20.13 Pin=TC264-56
+Removed Pin From Net: NetName=20.14 Pin=TC264-57
+Removed Pin From Net: NetName=15.0 Pin=TC264-58
+Removed Pin From Net: NetName=15.1 Pin=TC264-59
+Removed Pin From Net: NetName=15.2 Pin=TC264-60
+Removed Pin From Net: NetName=15.3 Pin=TC264-61
+Removed Pin From Net: NetName=15.4 Pin=TC264-62
+Removed Pin From Net: NetName=15.5 Pin=TC264-63
+Removed Pin From Net: NetName=14.0 Pin=TC264-67
+Removed Pin From Net: NetName=14.1 Pin=TC264-68
+Removed Pin From Net: NetName=13.0 Pin=TC264-74
+Removed Pin From Net: NetName=13.1 Pin=TC264-75
+Removed Pin From Net: NetName=13.2 Pin=TC264-76
+Removed Pin From Net: NetName=13.3 Pin=TC264-77
+Removed Pin From Net: NetName=11.9 Pin=TC264-81
+Removed Pin From Net: NetName=11.10 Pin=TC264-82
+Removed Pin From Net: NetName=11.11 Pin=TC264-83
+Removed Pin From Net: NetName=11.12 Pin=TC264-84
+Removed Pin From Net: NetName=10.1 Pin=TC264-85
+Removed Pin From Net: NetName=10.2 Pin=TC264-86
+Removed Pin From Net: NetName=10.3 Pin=TC264-87
+Removed Pin From Net: NetName=10.5 Pin=TC264-88
+Removed Pin From Net: NetName=10.6 Pin=TC264-89
+Removed Pin From Net: NetName=02.0 Pin=TC264-90
+Removed Pin From Net: NetName=02.1 Pin=TC264-91
+Removed Pin From Net: NetName=02.2 Pin=TC264-92
+Removed Pin From Net: NetName=02.3 Pin=TC264-93
+Removed Pin From Net: NetName=02.4 Pin=TC264-94
+Removed Pin From Net: NetName=02.5 Pin=TC264-95
+Removed Pin From Net: NetName=02.6 Pin=TC264-96
+Removed Pin From Net: NetName=02.7 Pin=TC264-97
+Removed Pin From Net: NetName=02.8 Pin=TC264-98
+Removed Pin From Net: NetName=00.0 Pin=TC264-99
+Removed Pin From Net: NetName=00.1 Pin=TC264-100
+Removed Pin From Net: NetName=00.2 Pin=TC264-101
+Removed Pin From Net: NetName=00.3 Pin=TC264-102
+Removed Pin From Net: NetName=00.4 Pin=TC264-103
+Removed Pin From Net: NetName=00.5 Pin=TC264-104
+Removed Pin From Net: NetName=00.6 Pin=TC264-105
+Removed Pin From Net: NetName=00.7 Pin=TC264-106
+Removed Pin From Net: NetName=00.9 Pin=TC264-108
+Removed Member From Class: ClassName=Sheet1 Member=TC264
+Change Component Designator: OldDesignator=Beep NewDesignator=B1
+Change Component Designator: OldDesignator=串口接口 NewDesignator=P16
+Change Component Designator: OldDesignator=停车检测 NewDesignator=P17
+Change Component Designator: OldDesignator=外接ADC接口 NewDesignator=P10
+Change Component Designator: OldDesignator=姿态传感器接口 NewDesignator=P4
+Change Component Designator: OldDesignator=屏幕接口 NewDesignator=P3
+Change Component Designator: OldDesignator=拨码开关 NewDesignator=S5
+Change Component Designator: OldDesignator=摄像头接口 NewDesignator=P5
+Change Component Designator: OldDesignator=无刷1 NewDesignator=P1
+Change Component Designator: OldDesignator=无刷2 NewDesignator=P2
+Change Component Designator: OldDesignator=无线串口模块 NewDesignator=P15
+Change Component Designator: OldDesignator=有刷电机1 NewDesignator=P11
+Change Component Designator: OldDesignator=有刷电机2 NewDesignator=P12
+Change Component Designator: OldDesignator=电磁运放1 NewDesignator=P13
+Change Component Designator: OldDesignator=电磁运放2 NewDesignator=P14
+Change Component Designator: OldDesignator=编码1 NewDesignator=P6
+Change Component Designator: OldDesignator=编码2 NewDesignator=P7
+Change Component Designator: OldDesignator=编码3 NewDesignator=P8
+Change Component Designator: OldDesignator=编码4 NewDesignator=P9
+Change Component Designator: OldDesignator=舵机接口 NewDesignator=P18
+Added Component: Designator=U?(TC264_CoreBoard)
+Added Pin To Net: NetName=GND Pin=U?-1
+Added Pin To Net: NetName=VCC Pin=U?-2
+Added Pin To Net: NetName=GND Pin=U?-3
+Added Pin To Net: NetName=VCC Pin=U?-4
+Added Pin To Net: NetName=A21 Pin=U?-5
+Added Pin To Net: NetName=A20 Pin=U?-6
+Added Pin To Net: NetName=A17 Pin=U?-7
+Added Pin To Net: NetName=A16 Pin=U?-8
+Added Pin To Net: NetName=A13 Pin=U?-9
+Added Pin To Net: NetName=A12 Pin=U?-10
+Added Pin To Net: NetName=A11 Pin=U?-11
+Added Pin To Net: NetName=A10 Pin=U?-12
+Added Pin To Net: NetName=A8 Pin=U?-13
+Added Pin To Net: NetName=A7 Pin=U?-14
+Added Pin To Net: NetName=A6 Pin=U?-15
+Added Pin To Net: NetName=A5 Pin=U?-16
+Added Pin To Net: NetName=A4 Pin=U?-17
+Added Pin To Net: NetName=A3 Pin=U?-18
+Added Pin To Net: NetName=A2 Pin=U?-19
+Added Pin To Net: NetName=A1 Pin=U?-20
+Added Pin To Net: NetName=A0 Pin=U?-21
+Added Pin To Net: NetName=33.6 Pin=U?-24
+Added Pin To Net: NetName=33.7 Pin=U?-25
+Added Pin To Net: NetName=33.9 Pin=U?-27
+Added Pin To Net: NetName=33.10 Pin=U?-28
+Added Pin To Net: NetName=33.12 Pin=U?-30
+Added Pin To Net: NetName=33.13 Pin=U?-31
+Added Pin To Net: NetName=32.4 Pin=U?-32
+Added Pin To Net: NetName=22.0 Pin=U?-34
+Added Pin To Net: NetName=22.1 Pin=U?-35
+Added Pin To Net: NetName=22.2 Pin=U?-36
+Added Pin To Net: NetName=22.3 Pin=U?-37
+Added Pin To Net: NetName=21.2 Pin=U?-38
+Added Pin To Net: NetName=21.3 Pin=U?-39
+Added Pin To Net: NetName=21.4 Pin=U?-40
+Added Pin To Net: NetName=21.5 Pin=U?-41
+Added Pin To Net: NetName=20.0 Pin=U?-44
+Added Pin To Net: NetName=20.3 Pin=U?-46
+Added Pin To Net: NetName=20.11 Pin=U?-54
+Added Pin To Net: NetName=20.12 Pin=U?-55
+Added Pin To Net: NetName=20.13 Pin=U?-56
+Added Pin To Net: NetName=20.14 Pin=U?-57
+Added Pin To Net: NetName=15.0 Pin=U?-58
+Added Pin To Net: NetName=15.1 Pin=U?-59
+Added Pin To Net: NetName=15.2 Pin=U?-60
+Added Pin To Net: NetName=15.3 Pin=U?-61
+Added Pin To Net: NetName=15.4 Pin=U?-62
+Added Pin To Net: NetName=15.5 Pin=U?-63
+Added Pin To Net: NetName=14.0 Pin=U?-67
+Added Pin To Net: NetName=14.1 Pin=U?-68
+Added Pin To Net: NetName=13.0 Pin=U?-74
+Added Pin To Net: NetName=13.1 Pin=U?-75
+Added Pin To Net: NetName=13.2 Pin=U?-76
+Added Pin To Net: NetName=13.3 Pin=U?-77
+Added Pin To Net: NetName=11.9 Pin=U?-81
+Added Pin To Net: NetName=11.10 Pin=U?-82
+Added Pin To Net: NetName=11.11 Pin=U?-83
+Added Pin To Net: NetName=11.12 Pin=U?-84
+Added Pin To Net: NetName=10.1 Pin=U?-85
+Added Pin To Net: NetName=10.2 Pin=U?-86
+Added Pin To Net: NetName=10.3 Pin=U?-87
+Added Pin To Net: NetName=10.5 Pin=U?-88
+Added Pin To Net: NetName=10.6 Pin=U?-89
+Added Pin To Net: NetName=02.0 Pin=U?-90
+Added Pin To Net: NetName=02.1 Pin=U?-91
+Added Pin To Net: NetName=02.2 Pin=U?-92
+Added Pin To Net: NetName=02.3 Pin=U?-93
+Added Pin To Net: NetName=02.4 Pin=U?-94
+Added Pin To Net: NetName=02.5 Pin=U?-95
+Added Pin To Net: NetName=02.6 Pin=U?-96
+Added Pin To Net: NetName=02.7 Pin=U?-97
+Added Pin To Net: NetName=02.8 Pin=U?-98
+Added Pin To Net: NetName=00.0 Pin=U?-99
+Added Pin To Net: NetName=00.1 Pin=U?-100
+Added Pin To Net: NetName=00.2 Pin=U?-101
+Added Pin To Net: NetName=00.3 Pin=U?-102
+Added Pin To Net: NetName=00.4 Pin=U?-103
+Added Pin To Net: NetName=00.5 Pin=U?-104
+Added Pin To Net: NetName=00.6 Pin=U?-105
+Added Pin To Net: NetName=00.7 Pin=U?-106
+Added Pin To Net: NetName=00.9 Pin=U?-108
+Added Member To Class: ClassName=Sheet1 Member=Component LEDSteer 翠绿贴片LED
+Added Member To Class: ClassName=Sheet1 Member=Component U? TC264_CoreBoard

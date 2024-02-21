@@ -1,0 +1,687 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD22\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">2023/6/6</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">20:57:28</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:02</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc" class="file"><acronym title="C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc">C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">117</td></tr>
+</table>
+</td>
+</table><a name="IDATJ50YLOGBE5ERUKIRTREJOROFC1F5REYSHRBP2DBJNOMU23EMI"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDBFD0BMZPNFR0FWJCIV2QAOD2WFJ2OXZC4ZUMQHQG3GFLK0XMAOG">Clearance Constraint (Gap=0.152mm) (All),(All)</a></td>
+<td class="column2">2</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDKXCA2LJIYJWQD0XKNLBFAAQ02G0AQX1IHLEWF2HXR0RMWVULEHRD">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDHMBCKPH5512WPBYEOPD5FQAFPJXWHIK420WTICINGUHJQIJJISAC">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDEERXG0IGMUCIJSJHTQCYQLABFCHPJF2UOH0FFRF5HGBG4LE0DOKH">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDHAKQQ1FZMMYMHAAUQCPWESLU1LGMNTZFUTNBZI3C0HT5X1R0INH">Width Constraint (Min=0.254mm) (Max=2.54mm) (Preferred=0.254mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDHEUC05N0ZBFTP3Z52ZW4R10AHN2ABQW4JPLCN4IBV2DGSTU3HSCE">Routing Layers(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDU04ZBELCQ1DYCRHHKF2WJJZ0QMDY4H0OQ3UYDVCWGHWKOR0WJRNO">Routing Via (MinHoleWidth=0.711mm) (MaxHoleWidth=0.711mm) (PreferredHoleWidth=0.711mm) (MinWidth=1.27mm) (MaxWidth=1.27mm) (PreferedWidth=1.27mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID2YDMURJMMF2ANXPAC5XT1XRXWJLDDCSIWYKVXIHXM4LALPA0AGCK">Differential Pairs Uncoupled Length using the Gap Constraints (Min=0.254mm) (Max=0.254mm) (Prefered=0.254mm)  and Width Constraints (Min=0.381mm) (Max=0.381mm) (Prefered=0.381mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDBOOT4WQR434NHXCEA3WKXGWIKCNO2PLP0PPPP2DJW121TCTRL15M">SMD Entry (Side = Allowed) (Corner = Allowed) (Any Angle = Not Allowed) (Ignore First Corner = Allowed)</a></td>
+<td class="column2">109</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDX2Z5MNTLURFZOHFLOKMFVCBJLPKU3VIRBE4P2IKYFMSLBZ3WCQHO">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDTGFW4SPGOLN4PFS4JQNCTZPZCCMM5AA5C1CH5SKMOQYXXNZ4PJZ">Component Clearance Constraint ( Horizontal Gap = 0.254mm, Vertical Gap = 0.254mm ) (All),(All) </a></td>
+<td class="column2">5</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAFC2DSJ4REWWBSR0WC3UG2CUEFFTTYB0ZEQ0YQJTG1RTMKRROJ2J">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">117</td>
+</tr>
+</table><br><a name="IDBFD0BMZPNFR0FWJCIV2QAOD2WFJ2OXZC4ZUMQHQG3GFLK0XMAOG"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Clearance Constraint (Gap=0.152mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6088.639mil|Location2.X=6095.889mil|Location1.Y=18247.437mil|Location2.Y=18254.687mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6088.639mil|Location2.X=6095.889mil|Location1.Y=18247.437mil|Location2.Y=18254.687mil|Absolute=True">Clearance Constraint: (0.139mm &lt; 0.152mm) Between Track (154.166mm,463.577mm)(154.166mm,465.836mm) on Top Layer And Track (155.321mm,462.556mm)(155.321mm,473.837mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7983.875mil|Location2.X=7991.125mil|Location1.Y=16781.375mil|Location2.Y=16788.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7983.875mil|Location2.X=7991.125mil|Location1.Y=16781.375mil|Location2.Y=16788.625mil|Absolute=True">Clearance Constraint: (0.127mm &lt; 0.152mm) Between Track (203.073mm,425.091mm)(203.073mm,429.26mm) on Top Layer And Via (202.184mm,426.339mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDHMBCKPH5512WPBYEOPD5FQAFPJXWHIK420WTICINGUHJQIJJISAC"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7751.748mil|Location2.X=7859mil|Location1.Y=15606mil|Location2.Y=15664mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7751.748mil|Location2.X=7859mil|Location1.Y=15606mil|Location2.Y=15664mil|Absolute=True">Un-Routed Net Constraint: Net 02.7 Between Pad R46-2(197.446mm,397.129mm) on Top Layer And Via (198.882mm,397.129mm) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDBOOT4WQR434NHXCEA3WKXGWIKCNO2PLP0PPPP2DJW121TCTRL15M"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">SMD Entry (Side = Allowed) (Corner = Allowed) (Any Angle = Not Allowed) (Ignore First Corner = Allowed)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5459.5mil|Location2.X=5483.985mil|Location1.Y=16590.209mil|Location2.Y=16629.694mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5459.5mil|Location2.X=5483.985mil|Location1.Y=16590.209mil|Location2.Y=16629.694mil|Absolute=True">SMD Entry Constraint: Between Pad C10-1(138.811mm,421.008mm) on Top Layer And Track (138.938mm,421.135mm)(138.938mm,422.231mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6038.004mil|Location2.X=6062.489mil|Location1.Y=16464.5mil|Location2.Y=16503.985mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6038.004mil|Location2.X=6062.489mil|Location1.Y=16464.5mil|Location2.Y=16503.985mil|Absolute=True">SMD Entry Constraint: Between Pad C12-2(154.432mm,418.211mm) on Top Layer And Track (149.379mm,418.465mm)(154.178mm,418.465mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6415.878mil|Location2.X=6440.363mil|Location1.Y=17239.382mil|Location2.Y=17278.867mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6415.878mil|Location2.X=6440.363mil|Location1.Y=17239.382mil|Location2.Y=17278.867mil|Absolute=True">SMD Entry Constraint: Between Pad C13-2(163.83mm,438.147mm) on Top Layer And Track (163.227mm,438.15mm)(163.23mm,438.147mm) on Top Layer Not Allowed Angle on side for track</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6585.996mil|Location2.X=6610.481mil|Location1.Y=17264.972mil|Location2.Y=17304.457mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6585.996mil|Location2.X=6610.481mil|Location1.Y=17264.972mil|Location2.Y=17304.457mil|Absolute=True">SMD Entry Constraint: Between Pad C14-2(166.751mm,438.147mm) on Top Layer And Track (167.551mm,438.797mm)(168.342mm,438.797mm) on Top Layer Not Allowed Angle in corner for track</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6833.004mil|Location2.X=6857.489mil|Location1.Y=17213.791mil|Location2.Y=17253.277mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6833.004mil|Location2.X=6857.489mil|Location1.Y=17213.791mil|Location2.Y=17253.277mil|Absolute=True">SMD Entry Constraint: Between Pad C15-2(174.498mm,438.147mm) on Top Layer And Track (173.825mm,437.41mm)(173.825mm,437.624mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7010.996mil|Location2.X=7035.481mil|Location1.Y=17349.5mil|Location2.Y=17388.985mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7010.996mil|Location2.X=7035.481mil|Location1.Y=17349.5mil|Location2.Y=17388.985mil|Absolute=True">SMD Entry Constraint: Between Pad C16-1(177.546mm,440.947mm) on Top Layer And Track (177.549mm,440.944mm)(179.705mm,440.944mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6559.499mil|Location2.X=6583.985mil|Location1.Y=17110.209mil|Location2.Y=17149.694mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6559.499mil|Location2.X=6583.985mil|Location1.Y=17110.209mil|Location2.Y=17149.694mil|Absolute=True">SMD Entry Constraint: Between Pad C18-1(166.878mm,434.216mm) on Top Layer And Track (166.751mm,434.993mm)(166.878mm,434.866mm) on Top Layer Not Allowed Angle on side for track</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6948.002mil|Location2.X=6972.487mil|Location1.Y=16975.366mil|Location2.Y=17014.851mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6948.002mil|Location2.X=6972.487mil|Location1.Y=16975.366mil|Location2.Y=17014.851mil|Absolute=True">SMD Entry Constraint: Between Pad C20-1(177.546mm,431.441mm) on Top Layer And Track (176.696mm,431.391mm)(176.746mm,431.441mm) on Top Layer Not Allowed Angle on side for track</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7010.994mil|Location2.X=7035.479mil|Location1.Y=17084.5mil|Location2.Y=17123.985mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7010.994mil|Location2.X=7035.479mil|Location1.Y=17084.5mil|Location2.Y=17123.985mil|Absolute=True">SMD Entry Constraint: Between Pad C20-2(177.546mm,434.241mm) on Top Layer And Track (177.574mm,434.213mm)(179.578mm,434.213mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6559.499mil|Location2.X=6583.985mil|Location1.Y=16850.209mil|Location2.Y=16889.694mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6559.499mil|Location2.X=6583.985mil|Location1.Y=16850.209mil|Location2.Y=16889.694mil|Absolute=True">SMD Entry Constraint: Between Pad C22-1(166.878mm,427.612mm) on Top Layer And Track (165.21mm,429.93mm)(166.878mm,428.262mm) on Top Layer Not Allowed Angle on side for track</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6528.004mil|Location2.X=6552.489mil|Location1.Y=16824.618mil|Location2.Y=16864.103mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6528.004mil|Location2.X=6552.489mil|Location1.Y=16824.618mil|Location2.Y=16864.103mil|Absolute=True">SMD Entry Constraint: Between Pad C22-1(166.878mm,427.612mm) on Top Layer And Track (166.075mm,427.609mm)(166.078mm,427.612mm) on Top Layer Not Allowed Angle on side for track</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6590.996mil|Location2.X=6615.481mil|Location1.Y=16799.028mil|Location2.Y=16838.513mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6590.996mil|Location2.X=6615.481mil|Location1.Y=16799.028mil|Location2.Y=16838.513mil|Absolute=True">SMD Entry Constraint: Between Pad C22-1(166.878mm,427.612mm) on Top Layer And Track (167.678mm,426.962mm)(168.073mm,426.962mm) on Top Layer Not Allowed Angle in corner for track</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6528.004mil|Location2.X=6552.489mil|Location1.Y=16714.382mil|Location2.Y=16753.867mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6528.004mil|Location2.X=6552.489mil|Location1.Y=16714.382mil|Location2.Y=16753.867mil|Absolute=True">SMD Entry Constraint: Between Pad C22-2(166.878mm,424.812mm) on Top Layer And Track (166.075mm,424.809mm)(166.078mm,424.812mm) on Top Layer Not Allowed Angle on side for track</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6835.878mil|Location2.X=6860.363mil|Location1.Y=16719.5mil|Location2.Y=16758.985mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6835.878mil|Location2.X=6860.363mil|Location1.Y=16719.5mil|Location2.Y=16758.985mil|Absolute=True">SMD Entry Constraint: Between Pad C23-1(174.498mm,424.815mm) on Top Layer And Track (173.101mm,424.942mm)(174.371mm,424.942mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7010.996mil|Location2.X=7035.481mil|Location1.Y=16850.209mil|Location2.Y=16889.694mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7010.996mil|Location2.X=7035.481mil|Location1.Y=16850.209mil|Location2.Y=16889.694mil|Absolute=True">SMD Entry Constraint: Between Pad C24-1(177.546mm,427.612mm) on Top Layer And Track (178.346mm,428.262mm)(178.346mm,429.126mm) on Top Layer Not Allowed Angle in corner for track</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6948.004mil|Location2.X=6972.489mil|Location1.Y=16714.382mil|Location2.Y=16753.867mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6948.004mil|Location2.X=6972.489mil|Location1.Y=16714.382mil|Location2.Y=16753.867mil|Absolute=True">SMD Entry Constraint: Between Pad C24-2(177.546mm,424.812mm) on Top Layer And Track (176.743mm,424.815mm)(176.746mm,424.812mm) on Top Layer Not Allowed Angle on side for track</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5510.996mil|Location2.X=5535.481mil|Location1.Y=17779.028mil|Location2.Y=17818.513mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5510.996mil|Location2.X=5535.481mil|Location1.Y=17779.028mil|Location2.Y=17818.513mil|Absolute=True">SMD Entry Constraint: Between Pad C3-2(139.446mm,451.996mm) on Top Layer And Track (139.588mm,451.854mm)(140.629mm,451.854mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5614.382mil|Location2.X=5638.867mil|Location1.Y=17648.004mil|Location2.Y=17687.489mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5614.382mil|Location2.X=5638.867mil|Location1.Y=17648.004mil|Location2.Y=17687.489mil|Absolute=True">SMD Entry Constraint: Between Pad C4-1(142.872mm,449.326mm) on Top Layer And Track (141.826mm,447.48mm)(142.872mm,448.526mm) on Top Layer Not Allowed Angle on side for track</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5750.208mil|Location2.X=5774.694mil|Location1.Y=17668.004mil|Location2.Y=17707.489mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5750.208mil|Location2.X=5774.694mil|Location1.Y=17668.004mil|Location2.Y=17707.489mil|Absolute=True">SMD Entry Constraint: Between Pad C4-2(145.672mm,449.326mm) on Top Layer And Track (145.814mm,449.034mm)(146.652mm,449.034mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5894.618mil|Location2.X=5919.103mil|Location1.Y=18208.004mil|Location2.Y=18247.489mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5894.618mil|Location2.X=5919.103mil|Location1.Y=18208.004mil|Location2.Y=18247.489mil|Absolute=True">SMD Entry Constraint: Between Pad C5-2(149.99mm,463.55mm) on Top Layer And Track (149.987mm,462.747mm)(149.99mm,462.75mm) on Top Layer Not Allowed Angle on side for track</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5684.185mil|Location2.X=5708.67mil|Location1.Y=16059.5mil|Location2.Y=16098.985mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5684.185mil|Location2.X=5708.67mil|Location1.Y=16059.5mil|Location2.Y=16098.985mil|Absolute=True">SMD Entry Constraint: Between Pad C9-2(144.145mm,408.226mm) on Top Layer And Track (144.193mm,408.178mm)(149.312mm,408.178mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5965.445mil|Location2.X=5989.93mil|Location1.Y=17569.5mil|Location2.Y=17608.985mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5965.445mil|Location2.X=5989.93mil|Location1.Y=17569.5mil|Location2.Y=17608.985mil|Absolute=True">SMD Entry Constraint: Between Pad L1-1(153.289mm,446.653mm) on Top Layer And Track (147.226mm,446.532mm)(153.289mm,446.532mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6022.61mil|Location2.X=6047.095mil|Location1.Y=17843.949mil|Location2.Y=17883.434mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6022.61mil|Location2.X=6047.095mil|Location1.Y=17843.949mil|Location2.Y=17883.434mil|Absolute=True">SMD Entry Constraint: Between Pad L1-2(153.289mm,452.253mm) on Top Layer And Track (153.241mm,452.301mm)(153.241mm,458.343mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8987.768mil|Location2.X=9012.253mil|Location1.Y=15778.554mil|Location2.Y=15818.039mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8987.768mil|Location2.X=9012.253mil|Location1.Y=15778.554mil|Location2.Y=15818.039mil|Absolute=True">SMD Entry Constraint: Between Pad LED3v3-A(228.981mm,401.042mm) on Top Layer And Track (228.541mm,401.027mm)(228.556mm,401.042mm) on Top Layer Not Allowed Angle on side for track</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5984.224mil|Location2.X=6008.709mil|Location1.Y=18328.516mil|Location2.Y=18368.001mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5984.224mil|Location2.X=6008.709mil|Location1.Y=18328.516mil|Location2.Y=18368.001mil|Absolute=True">SMD Entry Constraint: Between Pad LEDSteer-C(152.666mm,465.836mm) on Top Layer And Track (147.193mm,465.811mm)(152.666mm,465.811mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6004.5mil|Location2.X=6028.985mil|Location1.Y=18346.232mil|Location2.Y=18385.718mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6004.5mil|Location2.X=6028.985mil|Location1.Y=18346.232mil|Location2.Y=18385.718mil|Absolute=True">SMD Entry Constraint: Between Pad LEDSteer-C(152.666mm,465.836mm) on Top Layer And Track (152.781mm,465.951mm)(152.781mm,473.837mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5317.926mil|Location2.X=5342.411mil|Location1.Y=16801.232mil|Location2.Y=16840.718mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5317.926mil|Location2.X=5342.411mil|Location1.Y=16801.232mil|Location2.Y=16840.718mil|Absolute=True">SMD Entry Constraint: Between Pad Q1-1(134.493mm,429.768mm) on Top Layer And Track (135.342mm,401.066mm)(135.342mm,428.919mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4983.319mil|Location2.X=5007.804mil|Location1.Y=17012.308mil|Location2.Y=17051.793mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4983.319mil|Location2.X=5007.804mil|Location1.Y=17012.308mil|Location2.Y=17051.793mil|Absolute=True">SMD Entry Constraint: Between Pad Q1-2(127.943mm,432.048mm) on Top Layer And Track (125.984mm,433.238mm)(127.174mm,432.048mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=-213376.539mil|Location2.X=-213352.053mil|Location1.Y=105746.464mil|Location2.Y=105785.949mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=-213376.539mil|Location2.X=-213352.053mil|Location1.Y=105746.464mil|Location2.Y=105785.949mil|Absolute=True">SMD Entry Constraint: Between Pad Q1-3(127.943mm,427.488mm) on Top Layer And Track (126.837mm,427.482mm)(126.843mm,427.488mm) on Top Layer Not Allowed Angle on side for track</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9512.856mil|Location2.X=9537.341mil|Location1.Y=17373.831mil|Location2.Y=17413.316mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9512.856mil|Location2.X=9537.341mil|Location1.Y=17373.831mil|Location2.Y=17413.316mil|Absolute=True">SMD Entry Constraint: Between Pad Q2-1(241.94mm,442.087mm) on Top Layer And Track (241.893mm,440.263mm)(241.893mm,442.04mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5343.201mil|Location2.X=5367.686mil|Location1.Y=17089.5mil|Location2.Y=17128.985mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5343.201mil|Location2.X=5367.686mil|Location1.Y=17089.5mil|Location2.Y=17128.985mil|Absolute=True">SMD Entry Constraint: Between Pad R1-1(135.509mm,434.506mm) on Top Layer And Track (135.675mm,434.34mm)(139.573mm,434.34mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7338.556mil|Location2.X=7363.041mil|Location1.Y=17713.201mil|Location2.Y=17752.686mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7338.556mil|Location2.X=7363.041mil|Location1.Y=17713.201mil|Location2.Y=17752.686mil|Absolute=True">SMD Entry Constraint: Between Pad R12-2(186.778mm,449.707mm) on Top Layer And Track (186.666mm,449.707mm)(186.666mm,451.612mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7401.926mil|Location2.X=7426.411mil|Location1.Y=16473.201mil|Location2.Y=16512.686mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7401.926mil|Location2.X=7426.411mil|Location1.Y=16473.201mil|Location2.Y=16512.686mil|Absolute=True">SMD Entry Constraint: Between Pad R13-1(188.302mm,418.211mm) on Top Layer And Track (188.276mm,418.237mm)(188.276mm,421.894mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7334.972mil|Location2.X=7359.457mil|Location1.Y=16435.799mil|Location2.Y=16475.285mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7334.972mil|Location2.X=7359.457mil|Location1.Y=16435.799mil|Location2.Y=16475.285mil|Absolute=True">SMD Entry Constraint: Between Pad R13-2(186.602mm,418.211mm) on Top Layer And Track (186.575mm,415.925mm)(186.575mm,418.184mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11191.43mil|Location2.X=11215.915mil|Location1.Y=17140.799mil|Location2.Y=17180.285mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11191.43mil|Location2.X=11215.915mil|Location1.Y=17140.799mil|Location2.Y=17180.285mil|Absolute=True">SMD Entry Constraint: Between Pad R15-1(284.568mm,436.118mm) on Top Layer And Track (284.529mm,427.38mm)(284.529mm,436.079mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11138.24mil|Location2.X=11162.725mil|Location1.Y=17140.799mil|Location2.Y=17180.285mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11138.24mil|Location2.X=11162.725mil|Location1.Y=17140.799mil|Location2.Y=17180.285mil|Absolute=True">SMD Entry Constraint: Between Pad R15-2(282.868mm,436.118mm) on Top Layer And Track (283.178mm,431.503mm)(283.178mm,435.808mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11192.963mil|Location2.X=11217.449mil|Location1.Y=16478.201mil|Location2.Y=16517.686mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11192.963mil|Location2.X=11217.449mil|Location1.Y=16478.201mil|Location2.Y=16517.686mil|Absolute=True">SMD Entry Constraint: Between Pad R17-1(284.568mm,418.338mm) on Top Layer And Track (284.529mm,418.852mm)(284.568mm,418.813mm) on Top Layer Not Allowed Angle on side for track</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10920.806mil|Location2.X=10945.291mil|Location1.Y=17578.201mil|Location2.Y=17617.686mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10920.806mil|Location2.X=10945.291mil|Location1.Y=17578.201mil|Location2.Y=17617.686mil|Absolute=True">SMD Entry Constraint: Between Pad R18-2(277.407mm,446.278mm) on Top Layer And Track (277.655mm,446.526mm)(277.655mm,446.985mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11135.54mil|Location2.X=11160.025mil|Location1.Y=17540.799mil|Location2.Y=17580.285mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11135.54mil|Location2.X=11160.025mil|Location1.Y=17540.799mil|Location2.Y=17580.285mil|Absolute=True">SMD Entry Constraint: Between Pad R19-1(282.829mm,446.278mm) on Top Layer And Track (283.109mm,445.603mm)(283.109mm,445.998mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5819.382mil|Location2.X=5843.867mil|Location1.Y=15790.799mil|Location2.Y=15830.284mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5819.382mil|Location2.X=5843.867mil|Location1.Y=15790.799mil|Location2.Y=15830.284mil|Absolute=True">SMD Entry Constraint: Between Pad R21-2(148.502mm,401.828mm) on Top Layer And Track (148.079mm,398.526mm)(148.079mm,401.825mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9584.5mil|Location2.X=9608.985mil|Location1.Y=17300.799mil|Location2.Y=17340.285mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9584.5mil|Location2.X=9608.985mil|Location1.Y=17300.799mil|Location2.Y=17340.285mil|Absolute=True">SMD Entry Constraint: Between Pad R23-1(243.674mm,440.182mm) on Top Layer And Track (243.713mm,437.388mm)(243.713mm,440.143mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9512.856mil|Location2.X=9537.341mil|Location1.Y=17338.201mil|Location2.Y=17377.686mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9512.856mil|Location2.X=9537.341mil|Location1.Y=17338.201mil|Location2.Y=17377.686mil|Absolute=True">SMD Entry Constraint: Between Pad R23-2(241.974mm,440.182mm) on Top Layer And Track (241.893mm,440.263mm)(241.893mm,442.04mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6818.318mil|Location2.X=6842.803mil|Location1.Y=18532.216mil|Location2.Y=18571.702mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6818.318mil|Location2.X=6842.803mil|Location1.Y=18532.216mil|Location2.Y=18571.702mil|Absolute=True">SMD Entry Constraint: Between Pad R26-1(173.902mm,470.535mm) on Top Layer And Track (173.101mm,471.336mm)(173.554mm,470.883mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6920.682mil|Location2.X=6945.168mil|Location1.Y=18669.5mil|Location2.Y=18708.985mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6920.682mil|Location2.X=6945.168mil|Location1.Y=18669.5mil|Location2.Y=18708.985mil|Absolute=True">SMD Entry Constraint: Between Pad R27-1(175.602mm,474.599mm) on Top Layer And Track (175.729mm,474.472mm)(178.816mm,474.472mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6818.319mil|Location2.X=6842.805mil|Location1.Y=18576.784mil|Location2.Y=18616.269mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6818.319mil|Location2.X=6842.805mil|Location1.Y=18576.784mil|Location2.Y=18616.269mil|Absolute=True">SMD Entry Constraint: Between Pad R28-1(173.902mm,472.567mm) on Top Layer And Track (173.14mm,471.805mm)(173.902mm,472.567mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10960.247mil|Location2.X=10984.733mil|Location1.Y=17626.786mil|Location2.Y=17666.271mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10960.247mil|Location2.X=10984.733mil|Location1.Y=17626.786mil|Location2.Y=17666.271mil|Absolute=True">SMD Entry Constraint: Between Pad R33-1(279.107mm,448.437mm) on Top Layer And Track (277.655mm,446.985mm)(278.759mm,448.089mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10995.681mil|Location2.X=11020.166mil|Location1.Y=17656.452mil|Location2.Y=17695.937mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10995.681mil|Location2.X=11020.166mil|Location1.Y=17656.452mil|Location2.Y=17695.937mil|Absolute=True">SMD Entry Constraint: Between Pad R33-1(279.107mm,448.437mm) on Top Layer And Track (279.411mm,448.741mm)(279.759mm,448.741mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11126.035mil|Location2.X=11150.521mil|Location1.Y=17663.201mil|Location2.Y=17702.686mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11126.035mil|Location2.X=11150.521mil|Location1.Y=17663.201mil|Location2.Y=17702.686mil|Absolute=True">SMD Entry Constraint: Between Pad R34-2(282.868mm,448.437mm) on Top Layer And Track (282.829mm,448.951mm)(282.868mm,448.912mm) on Top Layer Not Allowed Angle on side for track</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10893.319mil|Location2.X=10917.805mil|Location1.Y=17460.8mil|Location2.Y=17500.285mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10893.319mil|Location2.X=10917.805mil|Location1.Y=17460.8mil|Location2.Y=17500.285mil|Absolute=True">SMD Entry Constraint: Between Pad R35-2(277.407mm,444.119mm) on Top Layer And Track (273.341mm,443.771mm)(277.084mm,443.771mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10943.319mil|Location2.X=10967.805mil|Location1.Y=17177.216mil|Location2.Y=17216.702mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10943.319mil|Location2.X=10967.805mil|Location1.Y=17177.216mil|Location2.Y=17216.702mil|Absolute=True">SMD Entry Constraint: Between Pad R36-2(278.677mm,436.118mm) on Top Layer And Track (278.174mm,436.621mm)(278.248mm,436.547mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10948.32mil|Location2.X=10972.805mil|Location1.Y=16795.799mil|Location2.Y=16835.285mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10948.32mil|Location2.X=10972.805mil|Location1.Y=16795.799mil|Location2.Y=16835.285mil|Absolute=True">SMD Entry Constraint: Between Pad R37-2(278.677mm,427.355mm) on Top Layer And Track (278.354mm,423.589mm)(278.354mm,427.032mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10944.289mil|Location2.X=10968.774mil|Location1.Y=16478.201mil|Location2.Y=16517.686mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10944.289mil|Location2.X=10968.774mil|Location1.Y=16478.201mil|Location2.Y=16517.686mil|Absolute=True">SMD Entry Constraint: Between Pad R38-2(278.677mm,418.338mm) on Top Layer And Track (278.205mm,418.859mm)(278.354mm,418.711mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7514.931mil|Location2.X=7539.417mil|Location1.Y=18509.5mil|Location2.Y=18548.985mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7514.931mil|Location2.X=7539.417mil|Location1.Y=18509.5mil|Location2.Y=18548.985mil|Absolute=True">SMD Entry Constraint: Between Pad R39-2(191.596mm,470.662mm) on Top Layer And Track (189.105mm,470.408mm)(191.342mm,470.408mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7581.783mil|Location2.X=7606.269mil|Location1.Y=18618.2mil|Location2.Y=18657.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7581.783mil|Location2.X=7606.269mil|Location1.Y=18618.2mil|Location2.Y=18657.685mil|Absolute=True">SMD Entry Constraint: Between Pad R42-2(193.294mm,472.821mm) on Top Layer And Track (192.713mm,473.169mm)(192.971mm,473.169mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5497.217mil|Location2.X=5521.702mil|Location1.Y=18180.248mil|Location2.Y=18219.733mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5497.217mil|Location2.X=5521.702mil|Location1.Y=18180.248mil|Location2.Y=18219.733mil|Absolute=True">SMD Entry Constraint: Between Pad R5-2(139.446mm,462.495mm) on Top Layer And Track (139.446mm,462.495mm)(140.042mm,461.899mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5593.319mil|Location2.X=5617.805mil|Location1.Y=17815.096mil|Location2.Y=17854.582mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5593.319mil|Location2.X=5617.805mil|Location1.Y=17815.096mil|Location2.Y=17854.582mil|Absolute=True">SMD Entry Constraint: Between Pad R7-2(142.787mm,452.501mm) on Top Layer And Track (141.986mm,453.121mm)(142.606mm,452.501mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6059.028mil|Location2.X=6083.513mil|Location1.Y=18258.201mil|Location2.Y=18297.686mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6059.028mil|Location2.X=6083.513mil|Location1.Y=18258.201mil|Location2.Y=18297.686mil|Absolute=True">SMD Entry Constraint: Between Pad R8-1(154.139mm,463.55mm) on Top Layer And Track (154.166mm,463.577mm)(154.166mm,465.836mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6499.774mil|Location2.X=6524.259mil|Location1.Y=18258.201mil|Location2.Y=18297.686mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6499.774mil|Location2.X=6524.259mil|Location1.Y=18258.201mil|Location2.Y=18297.686mil|Absolute=True">SMD Entry Constraint: Between Pad R9-1(165.403mm,463.55mm) on Top Layer And Track (165.361mm,463.606mm)(165.361mm,465.575mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10957.138mil|Location2.X=10981.623mil|Location1.Y=17244.972mil|Location2.Y=17284.457mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10957.138mil|Location2.X=10981.623mil|Location1.Y=17244.972mil|Location2.Y=17284.457mil|Absolute=True">SMD Entry Constraint: Between Pad S1-1(279.178mm,438.066mm) on Top Layer And Track (278.426mm,438.289mm)(278.955mm,438.289mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11126.036mil|Location2.X=11150.521mil|Location1.Y=17336.586mil|Location2.Y=17376.071mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11126.036mil|Location2.X=11150.521mil|Location1.Y=17336.586mil|Location2.Y=17376.071mil|Absolute=True">SMD Entry Constraint: Between Pad S1-2(283.178mm,440.266mm) on Top Layer And Track (282.868mm,440.489mm)(282.868mm,444.119mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11161.862mil|Location2.X=11186.347mil|Location1.Y=16899.972mil|Location2.Y=16939.457mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11161.862mil|Location2.X=11186.347mil|Location1.Y=16899.972mil|Location2.Y=16939.457mil|Absolute=True">SMD Entry Constraint: Between Pad S2-1(283.178mm,429.303mm) on Top Layer And Track (283.401mm,429.526mm)(283.909mm,429.526mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10962.74mil|Location2.X=10987.225mil|Location1.Y=16549.682mil|Location2.Y=16589.167mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10962.74mil|Location2.X=10987.225mil|Location1.Y=16549.682mil|Location2.Y=16589.167mil|Absolute=True">SMD Entry Constraint: Between Pad S3-1(279.32mm,420.435mm) on Top Layer And Track (278.533mm,420.629mm)(279.127mm,420.629mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11149.5mil|Location2.X=11173.985mil|Location1.Y=16642.467mil|Location2.Y=16681.953mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11149.5mil|Location2.X=11173.985mil|Location1.Y=16642.467mil|Location2.Y=16681.953mil|Absolute=True">SMD Entry Constraint: Between Pad S3-2(283.32mm,422.635mm) on Top Layer And Track (283.464mm,422.779mm)(283.464mm,426.695mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11126.036mil|Location2.X=11150.521mil|Location1.Y=16266.587mil|Location2.Y=16306.073mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=11126.036mil|Location2.X=11150.521mil|Location1.Y=16266.587mil|Location2.Y=16306.073mil|Absolute=True">SMD Entry Constraint: Between Pad S4-2(283.305mm,413.088mm) on Top Layer And Track (282.868mm,413.311mm)(282.868mm,418.338mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5677.964mil|Location2.X=5702.449mil|Location1.Y=17561.429mil|Location2.Y=17600.914mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5677.964mil|Location2.X=5702.449mil|Location1.Y=17561.429mil|Location2.Y=17600.914mil|Absolute=True">SMD Entry Constraint: Between Pad U2-0(144.526mm,444.627mm) on Top Layer And Track (144.487mm,445.262mm)(144.487mm,452.501mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5728.713mil|Location2.X=5753.198mil|Location1.Y=17519.5mil|Location2.Y=17558.985mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5728.713mil|Location2.X=5753.198mil|Location1.Y=17519.5mil|Location2.Y=17558.985mil|Absolute=True">SMD Entry Constraint: Between Pad U2-0(144.526mm,444.627mm) on Top Layer And Track (144.487mm,445.262mm)(147.226mm,445.262mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5679.266mil|Location2.X=5703.751mil|Location1.Y=17427.571mil|Location2.Y=17467.056mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5679.266mil|Location2.X=5703.751mil|Location1.Y=17427.571mil|Location2.Y=17467.056mil|Absolute=True">SMD Entry Constraint: Between Pad U2-0(144.526mm,444.627mm) on Top Layer And Track (144.52mm,440.182mm)(144.52mm,444.183mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5786.634mil|Location2.X=5811.119mil|Location1.Y=17582.295mil|Location2.Y=17621.781mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5786.634mil|Location2.X=5811.119mil|Location1.Y=17582.295mil|Location2.Y=17621.781mil|Absolute=True">SMD Entry Constraint: Between Pad U2-8(147.226mm,446.532mm) on Top Layer And Track (147.247mm,446.715mm)(147.247mm,448.439mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5592.966mil|Location2.X=5617.451mil|Location1.Y=17091.452mil|Location2.Y=17130.937mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5592.966mil|Location2.X=5617.451mil|Location1.Y=17091.452mil|Location2.Y=17130.937mil|Absolute=True">SMD Entry Constraint: Between Pad U3-2(146.685mm,428.879mm) on Top Layer And Track (142.328mm,433.236mm)(142.328mm,436.709mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5885.769mil|Location2.X=5910.255mil|Location1.Y=16464.5mil|Location2.Y=16503.985mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5885.769mil|Location2.X=5910.255mil|Location1.Y=16464.5mil|Location2.Y=16503.985mil|Absolute=True">SMD Entry Constraint: Between Pad U3-3(149.225mm,419.633mm) on Top Layer And Track (149.379mm,418.465mm)(154.178mm,418.465mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=71030.674mil|Location2.X=71055.16mil|Location1.Y=105726.56mil|Location2.Y=105766.045mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=71030.674mil|Location2.X=71055.16mil|Location1.Y=105726.56mil|Location2.Y=105766.045mil|Absolute=True">SMD Entry Constraint: Between Pad U4-2(169.388mm,439.293mm) on Top Layer And Track (168.342mm,438.797mm)(168.838mm,439.293mm) on Top Layer Not Allowed Angle on side for track</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6659.5mil|Location2.X=6683.985mil|Location1.Y=17078.713mil|Location2.Y=17118.198mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6659.5mil|Location2.X=6683.985mil|Location1.Y=17078.713mil|Location2.Y=17118.198mil|Absolute=True">SMD Entry Constraint: Between Pad U5-1(169.388mm,433.766mm) on Top Layer And Track (169.418mm,433.847mm)(169.418mm,435.61mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=-10.5mil|Location2.X=13.985mil|Location1.Y=-10.5mil|Location2.Y=28.985mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=-10.5mil|Location2.X=13.985mil|Location1.Y=-10.5mil|Location2.Y=28.985mil|Absolute=True">SMD Entry Constraint: Between Pad U5-2(169.388mm,432.816mm) on Top Layer And Track (166.878mm,433.116mm)(168.838mm,433.116mm) on Top Layer Not Allowed Angle in corner for track</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6636.665mil|Location2.X=6661.15mil|Location1.Y=17041.311mil|Location2.Y=17080.796mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6636.665mil|Location2.X=6661.15mil|Location1.Y=17041.311mil|Location2.Y=17080.796mil|Absolute=True">SMD Entry Constraint: Between Pad U5-2(169.388mm,432.816mm) on Top Layer And Track (168.838mm,433.116mm)(169.138mm,432.816mm) on Top Layer Not Allowed Angle in corner for track</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=71030.674mil|Location2.X=71055.16mil|Location1.Y=105726.56mil|Location2.Y=105766.045mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=71030.674mil|Location2.X=71055.16mil|Location1.Y=105726.56mil|Location2.Y=105766.045mil|Absolute=True">SMD Entry Constraint: Between Pad U6-2(169.388mm,426.593mm) on Top Layer And Track (168.469mm,426.962mm)(168.838mm,426.593mm) on Top Layer Not Allowed Angle on side for track</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=-971.014mil|Location2.X=-946.528mil|Location1.Y=-107489.54mil|Location2.Y=-107450.055mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=-971.014mil|Location2.X=-946.528mil|Location1.Y=-107489.54mil|Location2.Y=-107450.055mil|Absolute=True">SMD Entry Constraint: Between Pad U6-3(169.388mm,425.643mm) on Top Layer And Track (168.857mm,424.812mm)(169.388mm,425.343mm) on Top Layer Not Allowed Angle on side for track</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7874.421mil|Location2.X=7898.907mil|Location1.Y=18464.2mil|Location2.Y=18503.685mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7874.421mil|Location2.X=7898.907mil|Location1.Y=18464.2mil|Location2.Y=18503.685mil|Absolute=True">SMD Entry Constraint: Between Pad 编码1-1(200.787mm,469.074mm) on Top Layer And Track (190.337mm,469.257mm)(200.604mm,469.257mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7874.421mil|Location2.X=7898.907mil|Location1.Y=18617.5mil|Location2.Y=18656.985mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7874.421mil|Location2.X=7898.907mil|Location1.Y=18617.5mil|Location2.Y=18656.985mil|Absolute=True">SMD Entry Constraint: Between Pad 编码1-2(200.787mm,473.774mm) on Top Layer And Track (198.628mm,473.151mm)(200.404mm,473.151mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7909.578mil|Location2.X=7934.063mil|Location1.Y=15926.981mil|Location2.Y=15966.466mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7909.578mil|Location2.X=7934.063mil|Location1.Y=15926.981mil|Location2.Y=15966.466mil|Absolute=True">SMD Entry Constraint: Between Pad 编码2-2(200.787mm,403.162mm) on Top Layer And Track (201.17mm,403.545mm)(201.17mm,404.943mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8489.421mil|Location2.X=8513.907mil|Location1.Y=15867.021mil|Location2.Y=15906.506mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8489.421mil|Location2.X=8513.907mil|Location1.Y=15867.021mil|Location2.Y=15906.506mil|Absolute=True">SMD Entry Constraint: Between Pad 编码4-2(216.408mm,403.289mm) on Top Layer And Track (214.717mm,404.47mm)(215.898mm,403.289mm) on Top Layer Not Allowed Angle on side for track</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9439.578mil|Location2.X=9464.063mil|Location1.Y=18574.579mil|Location2.Y=18614.065mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9439.578mil|Location2.X=9464.063mil|Location1.Y=18574.579mil|Location2.Y=18614.065mil|Absolute=True">SMD Entry Constraint: Between Pad 屏幕接口-10(239.649mm,473.711mm) on Top Layer And Track (240.032mm,471.93mm)(240.032mm,473.328mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9644.579mil|Location2.X=9669.064mil|Location1.Y=18640.28mil|Location2.Y=18679.765mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9644.579mil|Location2.X=9669.064mil|Location1.Y=18640.28mil|Location2.Y=18679.765mil|Absolute=True">SMD Entry Constraint: Between Pad 屏幕接口-14(244.729mm,473.711mm) on Top Layer And Track (244.748mm,473.73mm)(246.014mm,473.73mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9321.606mil|Location2.X=9346.091mil|Location1.Y=18519.461mil|Location2.Y=18558.946mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9321.606mil|Location2.X=9346.091mil|Location1.Y=18519.461mil|Location2.Y=18558.946mil|Absolute=True">SMD Entry Constraint: Between Pad 屏幕接口-7(237.109mm,469.011mm) on Top Layer And Track (237.035mm,470.408mm)(237.035mm,471.275mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9337.606mil|Location2.X=9362.091mil|Location1.Y=18574.579mil|Location2.Y=18614.065mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9337.606mil|Location2.X=9362.091mil|Location1.Y=18574.579mil|Location2.Y=18614.065mil|Absolute=True">SMD Entry Constraint: Between Pad 屏幕接口-8(237.109mm,473.711mm) on Top Layer And Track (237.442mm,471.089mm)(237.442mm,473.378mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7752.059mil|Location2.X=7776.545mil|Location1.Y=16859.422mil|Location2.Y=16898.907mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7752.059mil|Location2.X=7776.545mil|Location1.Y=16859.422mil|Location2.Y=16898.907mil|Absolute=True">SMD Entry Constraint: Between Pad 摄像头接口-12(198.819mm,428.879mm) on Top Layer And Track (196.781mm,428.496mm)(198.436mm,428.496mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7757.06mil|Location2.X=7781.545mil|Location1.Y=16754.421mil|Location2.Y=16793.907mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7757.06mil|Location2.X=7781.545mil|Location1.Y=16754.421mil|Location2.Y=16793.907mil|Absolute=True">SMD Entry Constraint: Between Pad 摄像头接口-14(198.819mm,426.339mm) on Top Layer And Track (197.296mm,425.698mm)(197.296mm,425.956mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7696.941mil|Location2.X=7721.426mil|Location1.Y=16676.082mil|Location2.Y=16715.567mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7696.941mil|Location2.X=7721.426mil|Location1.Y=16676.082mil|Location2.Y=16715.567mil|Absolute=True">SMD Entry Constraint: Between Pad 摄像头接口-15(194.119mm,423.799mm) on Top Layer And Track (194.159mm,423.839mm)(196.54mm,423.839mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7752.059mil|Location2.X=7776.545mil|Location1.Y=17359.422mil|Location2.Y=17398.907mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7752.059mil|Location2.X=7776.545mil|Location1.Y=17359.422mil|Location2.Y=17398.907mil|Absolute=True">SMD Entry Constraint: Between Pad 摄像头接口-2(198.819mm,441.579mm) on Top Layer And Track (196.781mm,441.196mm)(198.436mm,441.196mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7752.059mil|Location2.X=7776.545mil|Location1.Y=17162.916mil|Location2.Y=17202.401mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7752.059mil|Location2.X=7776.545mil|Location1.Y=17162.916mil|Location2.Y=17202.401mil|Absolute=True">SMD Entry Constraint: Between Pad 摄像头接口-6(198.819mm,436.499mm) on Top Layer And Track (196.937mm,436.205mm)(198.525mm,436.205mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7752.059mil|Location2.X=7776.545mil|Location1.Y=17059.422mil|Location2.Y=17098.907mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7752.059mil|Location2.X=7776.545mil|Location1.Y=17059.422mil|Location2.Y=17098.907mil|Absolute=True">SMD Entry Constraint: Between Pad 摄像头接口-8(198.819mm,433.959mm) on Top Layer And Track (196.975mm,433.576mm)(198.436mm,433.576mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9109.421mil|Location2.X=9133.907mil|Location1.Y=15719.5mil|Location2.Y=15758.985mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9109.421mil|Location2.X=9133.907mil|Location1.Y=15719.5mil|Location2.Y=15758.985mil|Absolute=True">SMD Entry Constraint: Between Pad 外接ADC接口-1(232.156mm,398.843mm) on Top Layer And Track (228.981mm,399.542mm)(231.773mm,399.542mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9614.422mil|Location2.X=9638.907mil|Location1.Y=15941.981mil|Location2.Y=15981.466mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9614.422mil|Location2.X=9638.907mil|Location1.Y=15941.981mil|Location2.Y=15981.466mil|Absolute=True">SMD Entry Constraint: Between Pad 外接ADC接口-12(244.856mm,403.543mm) on Top Layer And Track (244.473mm,403.926mm)(244.473mm,405.259mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9729.499mil|Location2.X=9753.985mil|Location1.Y=15756.941mil|Location2.Y=15796.426mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9729.499mil|Location2.X=9753.985mil|Location1.Y=15756.941mil|Location2.Y=15796.426mil|Absolute=True">SMD Entry Constraint: Between Pad 外接ADC接口-13(247.396mm,398.843mm) on Top Layer And Track (246.19mm,401.699mm)(247.396mm,400.493mm) on Top Layer Not Allowed Angle on side for track</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9829.499mil|Location2.X=9853.985mil|Location1.Y=15756.941mil|Location2.Y=15796.426mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9829.499mil|Location2.X=9853.985mil|Location1.Y=15756.941mil|Location2.Y=15796.426mil|Absolute=True">SMD Entry Constraint: Between Pad 外接ADC接口-15(249.936mm,398.843mm) on Top Layer And Track (248.666mm,401.763mm)(249.936mm,400.493mm) on Top Layer Not Allowed Angle on side for track</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9509.421mil|Location2.X=9533.907mil|Location1.Y=15698.721mil|Location2.Y=15738.206mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9509.421mil|Location2.X=9533.907mil|Location1.Y=15698.721mil|Location2.Y=15738.206mil|Absolute=True">SMD Entry Constraint: Between Pad 外接ADC接口-9(242.316mm,398.843mm) on Top Layer And Track (241.574mm,399.014mm)(242.145mm,399.014mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7439.579mil|Location2.X=7464.064mil|Location1.Y=18509.5mil|Location2.Y=18548.985mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7439.579mil|Location2.X=7464.064mil|Location1.Y=18509.5mil|Location2.Y=18548.985mil|Absolute=True">SMD Entry Constraint: Between Pad 无刷1-5(188.722mm,469.074mm) on Top Layer And Track (189.105mm,470.408mm)(191.342mm,470.408mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7439.579mil|Location2.X=7464.064mil|Location1.Y=18684.5mil|Location2.Y=18723.985mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7439.579mil|Location2.X=7464.064mil|Location1.Y=18684.5mil|Location2.Y=18723.985mil|Absolute=True">SMD Entry Constraint: Between Pad 无刷1-6(188.722mm,473.774mm) on Top Layer And Track (189.105mm,474.853mm)(191.594mm,474.853mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7439.579mil|Location2.X=7464.064mil|Location1.Y=15904.5mil|Location2.Y=15943.985mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7439.579mil|Location2.X=7464.064mil|Location1.Y=15904.5mil|Location2.Y=15943.985mil|Absolute=True">SMD Entry Constraint: Between Pad 无刷2-1(188.722mm,403.162mm) on Top Layer And Track (189.105mm,404.241mm)(195.746mm,404.241mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7439.579mil|Location2.X=7464.064mil|Location1.Y=15624.5mil|Location2.Y=15663.985mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=7439.579mil|Location2.X=7464.064mil|Location1.Y=15624.5mil|Location2.Y=15663.985mil|Absolute=True">SMD Entry Constraint: Between Pad 无刷2-2(188.722mm,398.462mm) on Top Layer And Track (189.105mm,397.129mm)(195.746mm,397.129mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10887.019mil|Location2.X=10911.505mil|Location1.Y=18443.454mil|Location2.Y=18482.939mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10887.019mil|Location2.X=10911.505mil|Location1.Y=18443.454mil|Location2.Y=18482.939mil|Absolute=True">SMD Entry Constraint: Between Pad 无线串口模块-3(278.447mm,468.757mm) on Top Layer And Track (276.565mm,468.73mm)(278.421mm,468.73mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10887.019mil|Location2.X=10911.505mil|Location1.Y=18242.878mil|Location2.Y=18282.363mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=10887.019mil|Location2.X=10911.505mil|Location1.Y=18242.878mil|Location2.Y=18282.363mil|Absolute=True">SMD Entry Constraint: Between Pad 无线串口模块-7(278.447mm,463.677mm) on Top Layer And Track (276.565mm,463.636mm)(278.406mm,463.636mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6518.866mil|Location2.X=6543.351mil|Location1.Y=18531.941mil|Location2.Y=18571.426mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6518.866mil|Location2.X=6543.351mil|Location1.Y=18531.941mil|Location2.Y=18571.426mil|Absolute=True">SMD Entry Constraint: Between Pad 有刷电机1-1(165.481mm,469.328mm) on Top Layer And Track (165.846mm,469.693mm)(165.846mm,471.154mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6519.092mil|Location2.X=6543.577mil|Location1.Y=18587.059mil|Location2.Y=18626.545mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6519.092mil|Location2.X=6543.577mil|Location1.Y=18587.059mil|Location2.Y=18626.545mil|Absolute=True">SMD Entry Constraint: Between Pad 有刷电机1-2(165.481mm,474.028mm) on Top Layer And Track (165.852mm,471.954mm)(165.852mm,473.657mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6602.848mil|Location2.X=6627.333mil|Location1.Y=18716.981mil|Location2.Y=18756.466mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6602.848mil|Location2.X=6627.333mil|Location1.Y=18716.981mil|Location2.Y=18756.466mil|Absolute=True">SMD Entry Constraint: Between Pad 有刷电机1-4(168.021mm,474.028mm) on Top Layer And Track (167.979mm,474.07mm)(167.979mm,476.377mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6724.579mil|Location2.X=6749.064mil|Location1.Y=18434.5mil|Location2.Y=18473.985mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6724.579mil|Location2.X=6749.064mil|Location1.Y=18434.5mil|Location2.Y=18473.985mil|Absolute=True">SMD Entry Constraint: Between Pad 有刷电机1-5(170.561mm,469.328mm) on Top Layer And Track (170.944mm,468.503mm)(173.902mm,468.503mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6724.579mil|Location2.X=6749.064mil|Location1.Y=18674.5mil|Location2.Y=18713.985mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6724.579mil|Location2.X=6749.064mil|Location1.Y=18674.5mil|Location2.Y=18713.985mil|Absolute=True">SMD Entry Constraint: Between Pad 有刷电机1-6(170.561mm,474.028mm) on Top Layer And Track (170.944mm,474.599mm)(173.902mm,474.599mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6724.579mil|Location2.X=6749.064mil|Location1.Y=15854.5mil|Location2.Y=15893.985mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6724.579mil|Location2.X=6749.064mil|Location1.Y=15854.5mil|Location2.Y=15893.985mil|Absolute=True">SMD Entry Constraint: Between Pad 有刷电机2-1(170.561mm,403.162mm) on Top Layer And Track (170.752mm,402.971mm)(177.8mm,402.971mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6724.579mil|Location2.X=6749.064mil|Location1.Y=15624.5mil|Location2.Y=15663.985mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6724.579mil|Location2.X=6749.064mil|Location1.Y=15624.5mil|Location2.Y=15663.985mil|Absolute=True">SMD Entry Constraint: Between Pad 有刷电机2-2(170.561mm,398.462mm) on Top Layer And Track (170.944mm,397.129mm)(177.927mm,397.129mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6519.578mil|Location2.X=6544.063mil|Location1.Y=15741.941mil|Location2.Y=15781.426mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6519.578mil|Location2.X=6544.063mil|Location1.Y=15741.941mil|Location2.Y=15781.426mil|Absolute=True">SMD Entry Constraint: Between Pad 有刷电机2-6(165.481mm,398.462mm) on Top Layer And Track (165.864mm,398.845mm)(165.864mm,400.257mm) on Top Layer Track Entry to PAD from not centre of Side</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDTGFW4SPGOLN4PFS4JQNCTZPZCCMM5AA5C1CH5SKMOQYXXNZ4PJZ"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Component Clearance Constraint ( Horizontal Gap = 0.254mm, Vertical Gap = 0.254mm ) (All),(All) </th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9648.939mil|Location2.X=9660.189mil|Location1.Y=17312.587mil|Location2.Y=17323.837mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9648.939mil|Location2.X=9660.189mil|Location1.Y=17312.587mil|Location2.Y=17323.837mil|Absolute=True">Component Clearance Constraint: (Collision &lt; 0.254mm) Between Component TC264-TC264_CoreBoard (218.948mm,417.83mm) on Top Layer And Small Component Beep-BEEP (250.063mm,440.182mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8536.166mil|Location2.X=8543.833mil|Location1.Y=16366.165mil|Location2.Y=16373.832mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8536.166mil|Location2.X=8543.833mil|Location1.Y=16366.165mil|Location2.Y=16373.832mil|Absolute=True">Component Clearance Constraint: (Collision &lt; 0.254mm) Between Component TC264-TC264_CoreBoard (218.948mm,417.83mm) on Top Layer And SMT Small Component Q2-S8050 (242.89mm,443.237mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8536.166mil|Location2.X=8543.833mil|Location1.Y=16366.165mil|Location2.Y=16373.832mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8536.166mil|Location2.X=8543.833mil|Location1.Y=16366.165mil|Location2.Y=16373.832mil|Absolute=True">Component Clearance Constraint: (Collision &lt; 0.254mm) Between Component TC264-TC264_CoreBoard (218.948mm,417.83mm) on Top Layer And SMT Small Component R22-10R ±1% (242.824mm,435.991mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8536.166mil|Location2.X=8543.833mil|Location1.Y=16366.165mil|Location2.Y=16373.832mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=8536.166mil|Location2.X=8543.833mil|Location1.Y=16366.165mil|Location2.Y=16373.832mil|Absolute=True">Component Clearance Constraint: (Collision &lt; 0.254mm) Between Component TC264-TC264_CoreBoard (218.948mm,417.83mm) on Top Layer And SMT Small Component R23-4.7K ±1% (242.824mm,440.182mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\%E7%94%B5%E5%8D%8F%E4%B8%80%E9%98%9F\%E6%91%84%E5%83%8F%E5%A4%B4%E7%A1%AC%E4%BB%B6\%E4%B8%BB%E6%9D%BF\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9586.086mil|Location2.X=9597.336mil|Location1.Y=17261.147mil|Location2.Y=17272.397mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\20219\Desktop\电协一队\摄像头硬件\主板\PCB_Project\PCB1.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=9586.086mil|Location2.X=9597.336mil|Location1.Y=17261.147mil|Location2.Y=17272.397mil|Absolute=True">Component Clearance Constraint: (Collision &lt; 0.254mm) Between Component TC264-TC264_CoreBoard (218.948mm,417.83mm) on Top Layer And SMT Small Component R24-10K ±1% (242.863mm,438.15mm) on Top Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
