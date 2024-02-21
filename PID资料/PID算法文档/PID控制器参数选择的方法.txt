@@ -1,0 +1,90 @@
+PID控制器参数选择的方法很多，例如试凑法、临界比例度法、扩充临界比例度法等。但是，对于PID控制而言，参数的选择始终是一件非常烦杂的工作，需要经过不断的调整才能得到较为满意的控制效果。依据经验，一般PID参数确定的步骤如下[42]：
+(1)        确定比例系数Kp
+确定比例系数Kp时，首先去掉PID的积分项和微分项，可以令Ti=0、Td=0，使之成为
+纯比例调节。输入设定为系统允许输出最大值的60％～70％，比例系数Kp由0开始逐渐增大，直至系统出现振荡；再反过来，从此时的比例系数Kp逐渐减小，直至系统振荡消失。记录此时的比例系数Kp，设定PID的比例系数Kp为当前值的60％～70％。
+(2)        确定积分时间常数Ti
+比例系数Kp确定之后，设定一个较大的积分时间常数Ti，然后逐渐减小Ti，直至系统出现振荡，然后再反过来，逐渐增大Ti，直至系统振荡消失。记录此时的Ti，设定PID的积分时间常数Ti为当前值的150％～180％。
+(3)        确定微分时间常数Td
+微分时间常数Td一般不用设定，为0即可，此时PID调节转换为PI调节。如果需要设定，则与确定Kp的方法相同，取不振荡时其值的30％。
+(4)        系统空载、带载联调
+对PID参数进行微调，直到满足性能要求。
+本文来自: DSP交流网(http://www.hellodsp.com/) 详细出处参考：http://www.hellodsp.com/bbs/viewthread.php?tid=688
+
+ 
+
+ 
+
+PID代码
+
+//定义变量
+float Kp;                       //PI调节的比例常数
+float Ti;                       //PI调节的积分常数
+float T;                        //采样周期
+float Ki;
+float ek;                       //偏差e[k]
+float ek1;                      //偏差e[k-1]
+float ek2;                      //偏差e[k-2]
+float uk;                       //u[k]
+signed int uk1;                 //对u[k]四舍五入取整
+signed int adjust;              //调节器输出调整量
+
+//变量初始化
+    Kp=4;
+    Ti=0。005;
+    T=0.001;
+// Ki=KpT/Ti=0.8，微分系数Kd=KpTd/T=0.8,Td=0.0002,根据实验调得的结果确定这些参数
+    ek=0;
+    ek1=0;
+    ek2=0;
+    uk=0;
+    uk1=0;
+    adjust=0;
+
+int piadjust(float ek)  //PI调节算法
+{
+    if( gabs(ek)<0.1 )
+    {
+       adjust=0;
+    }
+    else 
+    {     
+       uk=Kp*(ek-ek1)+Ki*ek;  //计算控制增量
+       ek1=ek; 
+       
+       uk1=(signed int)uk;
+       if(uk>0)
+       {
+          if(uk-uk1>=0.5)
+          {
+             uk1=uk1+1;
+          }
+       }
+       if(uk<0)
+       {
+          if(uk1-uk>=0.5)
+          {
+             uk1=uk1-1;
+          }
+       }
+       adjust=uk1;    
+    }        
+    
+    
+    return adjust;
+}
+
+下面是在AD中断程序中调用的代码。
+       
+       。。。。。。。。。。。
+       else //退出软启动后，PID调节,20ms调节一次
+           {
+              EvaRegs.CMPR3=EvaRegs.CMPR3+piadjust(ek);//误差较小PID调节稳住
+              if(EvaRegs.CMPR3>=890)
+              {
+                 EvaRegs.CMPR3=890; //限制PWM占空比
+              }        
+           }
+
+本文来自: DSP交流网(http://www.hellodsp.com/) 详细出处参考：http://www.hellodsp.com/bbs/viewthread.php?tid=688
+
+
