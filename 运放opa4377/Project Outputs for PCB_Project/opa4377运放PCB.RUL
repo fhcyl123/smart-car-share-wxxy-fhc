@@ -1,0 +1,6 @@
+DRC Rules Export File for PCB: C:\Users\20219\Desktop\电协一队\摄像头硬件\运放opa4377\opa4377运放PCB.PcbDoc
+RuleKind=Width|RuleName=Width_1|Scope=Board|Minimum=10.00
+RuleKind=SolderMaskExpansion|RuleName=SolderMaskExpansion|Scope=Board|Minimum=4.00
+RuleKind=Width|RuleName=Width|Scope=Board|Minimum=6.00
+RuleKind=Clearance|RuleName=Clearance|Scope=Board|Minimum=8.00
+RuleKind=ShortCircuit|RuleName=ShortCircuit|Scope=Board|Allowed=0

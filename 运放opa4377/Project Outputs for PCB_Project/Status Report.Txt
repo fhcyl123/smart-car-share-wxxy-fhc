@@ -1,0 +1,12 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [PCB_Project.PrjPcb]
+   Generated File[opa4377运放PCB.TXT]
+   Generated File[opa4377运放PCB.LDP]
+   Generated File[opa4377运放PCB.DRR]
+
+
+Files Generated   : 3
+Documents Printed : 0
+
+Finished Output Generation At 16:21:07 On 2023/5/29
