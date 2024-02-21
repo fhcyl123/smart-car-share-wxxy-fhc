@@ -1,0 +1,159 @@
+Added Component: Designator=C8(CAP-E-S 6.3)
+Add component (AddParameter): Name = "Revision"; Value = "V1.0"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Type"; Value = "铝电解"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "100uF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage"; Value = "35V"; VariantName = "[No Variations]"
+Added Component: Designator=C9(CAPC3216[1206]S)
+Add component (AddParameter): Name = "Revision"; Value = "V1.0"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Type"; Value = "X5R"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "4.7uF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage"; Value = "35V"; VariantName = "[No Variations]"
+Added Component: Designator=C10(CAPC1608[0603]S-N)
+Add component (AddParameter): Name = "Revision"; Value = "V1.0"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Type"; Value = "X7R"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "100nF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage"; Value = "50V"; VariantName = "[No Variations]"
+Added Component: Designator=C11(CAPC1608[0603]S-N)
+Add component (AddParameter): Name = "Revision"; Value = "V1.0"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Type"; Value = "X7R"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "100nF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage"; Value = "50V"; VariantName = "[No Variations]"
+Added Component: Designator=C12(CAPC3216[1206]S)
+Add component (AddParameter): Name = "Revision"; Value = "V1.0"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Type"; Value = "X5R"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "47uF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage"; Value = "25V"; VariantName = "[No Variations]"
+Added Component: Designator=C13(CAP-E-S 6.3)
+Add component (AddParameter): Name = "Revision"; Value = "V1.0"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Type"; Value = "铝电解"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "220uF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage"; Value = "25V"; VariantName = "[No Variations]"
+Added Component: Designator=C14(CAPC1608[0603]S-N)
+Add component (AddParameter): Name = "Revision"; Value = "V1.0"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Type"; Value = "X7R"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "4.7nF"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage"; Value = "50V"; VariantName = "[No Variations]"
+Added Component: Designator=D2(SMA-L[DO-214AC])
+Add component (AddParameter): Name = "Revision"; Value = "V1.0"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "SS54"; VariantName = "[No Variations]"
+Added Component: Designator=D3(SMA-L[DO-214AC])
+Add component (AddParameter): Name = "Revision"; Value = "V1.0"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "SS54"; VariantName = "[No Variations]"
+Added Component: Designator=L1(0630 TPC 7*7*3)
+Add component (AddParameter): Name = "DCR"; Value = ".5m"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Imax"; Value = "5A"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price(RMB)"; Value = "0.000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Revision"; Value = "July-2002: Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "4.7uH"; VariantName = "[No Variations]"
+Added Component: Designator=LED5V(LEDC1608(0603)-L)
+Add component (AddParameter): Name = "PartNumber"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price(RMB)"; Value = "0.00"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Revision"; Value = "July-2002: Re-released for DXP Platform."; VariantName = "[No Variations]"
+Added Component: Designator=R9(RESC1608[0603]S-N)
+Add component (AddParameter): Name = "Power"; Value = "1/8W"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Revision"; Value = "V1.0"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Tolerance"; Value = "±1%"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "200K"; VariantName = "[No Variations]"
+Added Component: Designator=R10(RESC1608[0603]S-N)
+Add component (AddParameter): Name = "Power"; Value = "1/8W"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Revision"; Value = "V1.0"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Tolerance"; Value = "±1%"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "51K"; VariantName = "[No Variations]"
+Added Component: Designator=R11(RESC1608[0603]S-N)
+Add component (AddParameter): Name = "Power"; Value = "1/8W"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Revision"; Value = "V1.0"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Tolerance"; Value = "±1%"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "1.5K"; VariantName = "[No Variations]"
+Added Component: Designator=R12(RESC1608[0603]S-N)
+Add component (AddParameter): Name = "Power"; Value = "1/8W"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Revision"; Value = "V1.0"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Tolerance"; Value = "±1%"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "10K"; VariantName = "[No Variations]"
+Added Component: Designator=R13(RESC1608[0603]S-N)
+Add component (AddParameter): Name = "Power"; Value = "1/8W"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Revision"; Value = "V1.0"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Tolerance"; Value = "±1%"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "4.7K"; VariantName = "[No Variations]"
+Added Component: Designator=R14(RESC1608[0603]S-N)
+Add component (AddParameter): Name = "Power"; Value = "1/8W"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Revision"; Value = "V1.0"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Tolerance"; Value = "±1%"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "20K"; VariantName = "[No Variations]"
+Added Component: Designator=U?(SOP-8E)
+Add component (AddParameter): Name = "Revision"; Value = "V1.0"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = "SP1N28STER"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=A0 Pin=C8-2
+Added Pin To Net: NetName=A0 Pin=C9-1
+Added Pin To Net: NetName=A0 Pin=C10-2
+Added Pin To Net: NetName=A0 Pin=C12-1
+Added Pin To Net: NetName=A0 Pin=C13-2
+Added Pin To Net: NetName=A0 Pin=C14-1
+Added Pin To Net: NetName=VCCBAT Pin=D2-A
+Added Pin To Net: NetName=VCC5V Pin=D3-K
+Added Pin To Net: NetName=A0 Pin=LED5V-C
+Added Pin To Net: NetName=A0 Pin=R9-1
+Added Pin To Net: NetName=VCC5V Pin=R10-2
+Added Pin To Net: NetName=A0 Pin=R12-1
+Added Pin To Net: NetName=VCC5V Pin=R13-2
+Added Pin To Net: NetName=A0 Pin=U?-0
+Added Pin To Net: NetName=A0 Pin=U?-7
+Added Pin To Net: NetName=NetC8_1 Pin=C8-1
+Added Pin To Net: NetName=NetC8_1 Pin=C9-2
+Added Pin To Net: NetName=NetC8_1 Pin=C10-1
+Added Pin To Net: NetName=NetC8_1 Pin=D2-K
+Added Pin To Net: NetName=NetC8_1 Pin=U?-2
+Added Pin To Net: NetName=NetC8_1 Pin=U?-3
+Added Net: Name=NetC8_1
+Added Pin To Net: NetName=NetC11_1 Pin=C11-1
+Added Pin To Net: NetName=NetC11_1 Pin=U?-1
+Added Net: Name=NetC11_1
+Added Pin To Net: NetName=NetC11_2 Pin=C11-2
+Added Pin To Net: NetName=NetC11_2 Pin=L1-1
+Added Pin To Net: NetName=NetC11_2 Pin=U?-8
+Added Net: Name=NetC11_2
+Added Pin To Net: NetName=NetC12_2 Pin=C12-2
+Added Pin To Net: NetName=NetC12_2 Pin=C13-1
+Added Pin To Net: NetName=NetC12_2 Pin=D3-A
+Added Pin To Net: NetName=NetC12_2 Pin=L1-2
+Added Net: Name=NetC12_2
+Added Pin To Net: NetName=NetC14_2 Pin=C14-2
+Added Pin To Net: NetName=NetC14_2 Pin=R14-1
+Added Net: Name=NetC14_2
+Added Pin To Net: NetName=NetLED5V_A Pin=LED5V-A
+Added Pin To Net: NetName=NetLED5V_A Pin=R13-1
+Added Net: Name=NetLED5V_A
+Added Pin To Net: NetName=NetR9_2 Pin=R9-2
+Added Pin To Net: NetName=NetR9_2 Pin=U?-4
+Added Net: Name=NetR9_2
+Added Pin To Net: NetName=NetR10_1 Pin=R10-1
+Added Pin To Net: NetName=NetR10_1 Pin=R11-2
+Added Net: Name=NetR10_1
+Added Pin To Net: NetName=NetR11_1 Pin=R11-1
+Added Pin To Net: NetName=NetR11_1 Pin=R12-2
+Added Pin To Net: NetName=NetR11_1 Pin=U?-5
+Added Net: Name=NetR11_1
+Added Pin To Net: NetName=NetR14_2 Pin=R14-2
+Added Pin To Net: NetName=NetR14_2 Pin=U?-6
+Added Net: Name=NetR14_2
+Added Member To Class: ClassName=Sheet1 Member=Component C8 100uF 35V 铝电解
+Added Member To Class: ClassName=Sheet1 Member=Component C9 4.7uF 35V X5R
+Added Member To Class: ClassName=Sheet1 Member=Component C10 100nF 50V X7R
+Added Member To Class: ClassName=Sheet1 Member=Component C11 100nF 50V X7R
+Added Member To Class: ClassName=Sheet1 Member=Component C12 47uF 25V X5R
+Added Member To Class: ClassName=Sheet1 Member=Component C13 220uF 25V 铝电解
+Added Member To Class: ClassName=Sheet1 Member=Component C14 4.7nF 50V X7R
+Added Member To Class: ClassName=Sheet1 Member=Component D2 SS54
+Added Member To Class: ClassName=Sheet1 Member=Component D3 SS54
+Added Member To Class: ClassName=Sheet1 Member=Component L1 4.7uH 5A
+Added Member To Class: ClassName=Sheet1 Member=Component LED5V 翠绿贴片LED
+Added Member To Class: ClassName=Sheet1 Member=Component R9 200K ±1%
+Added Member To Class: ClassName=Sheet1 Member=Component R10 51K ±1%
+Added Member To Class: ClassName=Sheet1 Member=Component R11 1.5K ±1%
+Added Member To Class: ClassName=Sheet1 Member=Component R12 10K ±1%
+Added Member To Class: ClassName=Sheet1 Member=Component R13 4.7K ±1%
+Added Member To Class: ClassName=Sheet1 Member=Component R14 20K ±1%
+Added Member To Class: ClassName=Sheet1 Member=Component U? SP1N28STER

@@ -1,0 +1,2 @@
+Remove Pin=U1-11 From Net=A11
+Add Pin To Net: Pin=U1-11 Old Net=A11 New Net=A5

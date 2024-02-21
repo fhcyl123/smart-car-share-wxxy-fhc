@@ -1,0 +1,10 @@
+Removed Member From Class: ClassName=Sheet1 Member=M1
+Removed Member From Class: ClassName=Sheet1 Member=M3
+Removed Member From Class: ClassName=Sheet1 Member=M4
+Removed Member From Class: ClassName=Sheet1 Member=M5
+Removed Member From Class: ClassName=Sheet1 Member=M6
+Removed Member From Class: ClassName=Sheet1 Member=M7
+Removed Member From Class: ClassName=Sheet1 Member=M8
+Change Component Designator: OldDesignator=电机接口1 NewDesignator=DCOUT1
+Change Component Designator: OldDesignator=电机接口2 NewDesignator=DCOUT2
+Added Room: Name=Sheet1
